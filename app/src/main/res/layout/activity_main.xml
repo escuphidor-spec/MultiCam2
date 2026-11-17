@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B0D10"
+    android:keepScreenOn="true"
+    android:orientation="vertical">
+
+    <!-- Barra superior de pestañas (Cada pestaña tiene 2 cámaras) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="#16191E"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:tabIndicatorColor="#FFFFFF"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="#FFFFFF"
+            app:tabTextColor="#888888" />
+
+        <Button
+            android:id="@+id/btnAddTab"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:text="+ Pestaña"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- MITAD SUPERIOR: CÁMARA 1 DE LA PESTAÑA ACTUAL -->
+    <FrameLayout
+        android:id="@+id/slotTopContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#0E1116"
+        android:clipChildren="true">
+
+        <TextureView
+            android:id="@+id/textureTop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <!-- Botón circular + cuando no hay cámara configurada -->
+        <FrameLayout
+            android:id="@+id/btnAddTop"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_plus_circle"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:includeFontPadding="false"
+                android:text="+"
+                android:textColor="#FFFFFF"
+                android:textSize="48sp" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvStatusTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#AA000000"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="Conectando..."
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <!-- Barra flotante de controles para la cámara superior -->
+        <LinearLayout
+            android:id="@+id/headerTop"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_gravity="top"
+            android:background="#88000000"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvNameTop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Cámara 1"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnResetZoomTop"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Restablecer Zoom"
+                android:src="@android:drawable/ic_menu_crop" />
+
+            <ImageButton
+                android:id="@+id/btnMuteTop"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Silenciar"
+                android:src="@android:drawable/ic_lock_silent_mode_off" />
+
+            <ImageButton
+                android:id="@+id/btnEditTop"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Configurar"
+                android:src="@android:drawable/ic_menu_manage" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Línea divisoria central -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#262A30" />
+
+    <!-- MITAD INFERIOR: CÁMARA 2 DE LA PESTAÑA ACTUAL -->
+    <FrameLayout
+        android:id="@+id/slotBottomContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#050608"
+        android:clipChildren="true">
+
+        <TextureView
+            android:id="@+id/textureBottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <!-- Botón circular + cuando no hay cámara configurada -->
+        <FrameLayout
+            android:id="@+id/btnAddBottom"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_plus_circle"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:includeFontPadding="false"
+                android:text="+"
+                android:textColor="#FFFFFF"
+                android:textSize="48sp" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvStatusBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#AA000000"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="Conectando..."
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:visibility="gone" />
+
+        <!-- Barra flotante de controles para la cámara inferior -->
+        <LinearLayout
+            android:id="@+id/headerBottom"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_gravity="top"
+            android:background="#88000000"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvNameBottom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Cámara 2"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btnResetZoomBottom"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Restablecer Zoom"
+                android:src="@android:drawable/ic_menu_crop" />
+
+            <ImageButton
+                android:id="@+id/btnMuteBottom"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Silenciar"
+                android:src="@android:drawable/ic_lock_silent_mode_off" />
+
+            <ImageButton
+                android:id="@+id/btnEditBottom"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Configurar"
+                android:src="@android:drawable/ic_menu_manage" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>
